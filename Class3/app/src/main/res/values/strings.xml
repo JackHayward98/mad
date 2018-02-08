@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Class3</string>
+    <string name="choosemap">MapChooseType</string>
+    <string name="regularview">Regularview</string>
+    <string name="hikebikemapview">HikeBikeMap</string>
+    <string name="selectmap">SelectMap</string>
+</resources>
