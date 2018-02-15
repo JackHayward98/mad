@@ -1,5 +1,6 @@
 package com.example.a2haywj72.class3;
 
+import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,11 +27,7 @@ public class MainActivity extends AppCompatActivity {
         Configuration.getInstance().load(this, PreferenceManager.getDefaultSharedPreferences (this));
         setContentView(R.layout.activity_main);
 
-        mv = (MapView)findViewById(R.id.map1);
-        mv.setBuiltInZoomControls(true);
 
-        mv.getController().setZoom(16);
-        mv.getController().setCenter(new GeoPoint(51.05,-0.72));
     }
 
     public boolean onCreateOptionsMenu(Menu menu)
@@ -51,4 +48,21 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
+    public void onStart()
+    {
+        super.onStart();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        double lat = Double.parseDouble ( prefs.getString("lat", "50.9") );
+        double lon = Double.parseDouble ( prefs.getString("lon", "-1.4") );
+        int zoom = Integer.parseInt(prefs.getString("zoom", "11"));
+        String mapViewCode = prefs.getString("mapView", "NONE");
+
+        mv = (MapView)findViewById(R.id.map1);
+        mv.setBuiltInZoomControls(true);
+
+        mv.getController().setZoom(zoom);
+        mv.getController().setCenter(new GeoPoint(lat,lon));
+        // do something with the preference data...
+    }
+
 }
