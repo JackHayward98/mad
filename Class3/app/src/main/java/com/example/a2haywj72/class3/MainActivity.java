@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         double lat = Double.parseDouble ( prefs.getString("lat", "50.9") );
         double lon = Double.parseDouble ( prefs.getString("lon", "-1.4") );
+        boolean autodownload = prefs.getBoolean("autodownload", true);
         int zoom = Integer.parseInt(prefs.getString("zoom", "11"));
         String mapViewCode = prefs.getString("mapView", "NONE");
 
